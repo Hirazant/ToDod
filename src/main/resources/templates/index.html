@@ -16,7 +16,11 @@
 </div>
 
 <div>
-    <tr th:each="">
+    <tr th:each="tusk : ${tusks}">
+        <td><span th:text="${tusk.text}"></span> </td>
+        <td><span th:text="${tusk.timeStart}"></span> </td>
+        <td><span th:text="${tusk.timeEnd}"></span></td>
+    </tr>
 </div>
 <p>Get your greeting <a href="/greeting">here</a></p>
 </body>

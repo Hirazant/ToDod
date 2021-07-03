@@ -1,10 +1,27 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Введите занятие">
+        <input type="text" name="startTime" placeholder="Введите время начала">
+        <input type="text" name="endTime" placeholder="Введите время окончания">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>
+    <tr th:each="tusk : ${tusks}">
+        <td><span th:text="${tusk.text}"></span> </td>
+        <td><span th:text="${tusk.timeStart}"></span> </td>
+        <td><span th:text="${tusk.timeEnd}"></span></td>
+    </tr>
+</div>
 <p>Get your greeting <a href="/greeting">here</a></p>
 </body>
 </html>

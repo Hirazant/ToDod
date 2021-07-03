@@ -26,9 +26,9 @@ public class GreetingController {
 
     @GetMapping
     public String index(Map<String, Object> model){
-        Iterable<Tusk> cases = tuskRepo.findAll();
+        Iterable<Tusk> tusks = tuskRepo.findAll();
 
-        model.put("cases", cases);
+        model.put("tusks", tusks);
 
         return "index";
     }
@@ -39,9 +39,9 @@ public class GreetingController {
         Tusk tusk = new Tusk(text,startTime,endTime);
         tuskRepo.save(tusk);
 
-        Iterable<Tusk> cases = tuskRepo.findAll();
+        Iterable<Tusk> tusks = tuskRepo.findAll();
 
-        model.put("cases", cases);
+        model.put("tusks", tusks);
 
         return "index";
     }

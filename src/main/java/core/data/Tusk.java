@@ -18,18 +18,18 @@ public class Tusk {
 
     public Tusk(){}
 
-    public Tusk(String tusk, String timeStart, String timeEnd) {
-        this.text = tusk;
+    public Tusk(String text, String timeStart, String timeEnd) {
+        this.text = text;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
     }
 
-    public String getTusk() {
+    public String getText() {
         return text;
     }
 
-    public void setTusk(String tusk) {
-        this.text = tusk;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getTimeStart() {
