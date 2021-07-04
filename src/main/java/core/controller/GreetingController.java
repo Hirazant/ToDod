@@ -17,23 +17,21 @@ public class GreetingController {
     @Autowired
     private TuskRepo tuskRepo;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name,
-                           Model model){
-        model.addAttribute("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model){
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String index(Map<String, Object> model){
         Iterable<Tusk> tusks = tuskRepo.findAll();
 
         model.put("tusks", tusks);
 
-        return "index";
+        return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String startTime,
                       @RequestParam String endTime, Map<String, Object> model){
         Tusk tusk = new Tusk(text,startTime,endTime);
@@ -43,7 +41,7 @@ public class GreetingController {
 
         model.put("tusks", tusks);
 
-        return "index";
+        return "main";
     }
 
 }
