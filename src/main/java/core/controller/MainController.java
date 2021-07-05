@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
     @Autowired
     private TuskRepo tuskRepo;
@@ -31,7 +31,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping("/main")
+    @PostMapping("/add")
     public String add(@RequestParam String text, @RequestParam String startTime,
                       @RequestParam String endTime, Map<String, Object> model){
         Tusk tusk = new Tusk(text,startTime,endTime);

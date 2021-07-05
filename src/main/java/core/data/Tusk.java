@@ -24,6 +24,14 @@ public class Tusk {
         this.timeEnd = timeEnd;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getText() {
         return text;
     }

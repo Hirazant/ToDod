@@ -5,9 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
 <div>
-    <form method="post">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form th:action="@{/add}" method="post">
         <input type="text" name="text" placeholder="Введите занятие">
         <input type="text" name="startTime" placeholder="Введите время начала">
         <input type="text" name="endTime" placeholder="Введите время окончания">
@@ -17,12 +21,12 @@
 
 <div>
     <tr th:each="tusk : ${tusks}">
+        id: <td><span th:text="${tusk.id}"></span></td>
         Текст: <td><span th:text="${tusk.text}">Text</span> </td>
         Время начала: <td><span th:text="${tusk.timeStart}">Start</span> </td>
         Время конца: <td><span th:text="${tusk.timeEnd}">End</span> </td>
         <br>
     </tr>
 </div>
-<p>Get your greeting <a href="/greeting">here</a></p>
 </body>
 </html>
