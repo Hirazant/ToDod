@@ -1,8 +1,10 @@
 package core.controller;
 
 import core.data.Tusk;
+import core.data.User;
 import core.repos.TuskRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +34,10 @@ public class MainController {
     }
 
     @PostMapping("/add")
-    public String add(@RequestParam String text, @RequestParam String startTime,
+    public String add(@AuthenticationPrincipal User user,
+                    @RequestParam String text, @RequestParam String startTime,
                       @RequestParam String endTime, Map<String, Object> model){
-        Tusk tusk = new Tusk(text,startTime,endTime);
+        Tusk tusk = new Tusk(text,startTime,endTime, user);
         tuskRepo.save(tusk);
 
         Iterable<Tusk> tusks = tuskRepo.findAll();

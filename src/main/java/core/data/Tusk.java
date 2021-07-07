@@ -1,9 +1,6 @@
 package core.data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Tusk {
@@ -16,12 +13,29 @@ public class Tusk {
     private String timeStart;
     private String timeEnd;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Tusk(){}
 
-    public Tusk(String text, String timeStart, String timeEnd) {
+    public Tusk(String text, String timeStart, String timeEnd, User user) {
         this.text = text;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
+        this.user = user;
+    }
+
+    public String getUserName(){
+        return user != null ? user.getUsername() : "<noneee>";
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {
